@@ -28,6 +28,10 @@ connectDB();
 app.use(express.json());
 
 // Routes
+app.get("/health", (req, res) => {         // for invoking backend repeatatively to keep it alive
+  res.status(200).json({ status: "ok" });
+});
+
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/tasks", taskRoutes);
